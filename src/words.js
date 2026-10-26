@@ -11,6 +11,6 @@ function truncate(text, max) {
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
 function endsWithVowel(text) {
-  return /[aeiou]$/i.test(String(text));
+  return /[aeiou]/i.test(String(text).slice(-1));
 }
 module.exports = { countWords, slugify, truncate, endsWithVowel };

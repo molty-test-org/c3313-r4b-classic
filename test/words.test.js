@@ -23,3 +23,7 @@ test("endsWithVowel is false for consonant endings and empty input", () => {
     assert.strictEqual(endsWithVowel(word), false, word);
   }
 });
+test("endsWithVowel looks only at the final character", () => {
+  assert.strictEqual(endsWithVowel("a\n"), false);
+  assert.strictEqual(endsWithVowel("a"), true);
+});
