@@ -10,4 +10,8 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+// Counts the letters b-z that are not a, e, i, o or u; y counts as a consonant.
+function countConsonants(text) {
+  return (String(text).match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
+}
+module.exports = { countWords, slugify, truncate, countConsonants };
