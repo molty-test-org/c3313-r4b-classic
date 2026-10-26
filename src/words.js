@@ -10,4 +10,7 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function endsWithVowel(text) {
+  return /[aeiou]/i.test(String(text).slice(-1));
+}
+module.exports = { countWords, slugify, truncate, endsWithVowel };
