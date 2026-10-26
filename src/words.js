@@ -10,4 +10,8 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function isPalindrome(text) {
+  const s = String(text).toLowerCase().replace(/[^a-z0-9]+/g, "");
+  return s === s.split("").reverse().join("");
+}
+module.exports = { countWords, slugify, truncate, isPalindrome };
