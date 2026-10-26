@@ -10,4 +10,11 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function countSentences(text) {
+  const t = String(text).trim();
+  if (t === "") return 0;
+  const endings = t.match(/[.!?]+/g) || [];
+  const unfinished = /[.!?]["'’”)\]}]*$/.test(t) ? 0 : 1;
+  return endings.length + unfinished;
+}
+module.exports = { countWords, slugify, truncate, countSentences };
