@@ -14,7 +14,7 @@ function countSentences(text) {
   const t = String(text).trim();
   if (t === "") return 0;
   const endings = t.match(/[.!?]+/g) || [];
-  const unfinished = /[.!?]$/.test(t) ? 0 : 1;
+  const unfinished = /[.!?]["'’”)\]}]*$/.test(t) ? 0 : 1;
   return endings.length + unfinished;
 }
 module.exports = { countWords, slugify, truncate, countSentences };

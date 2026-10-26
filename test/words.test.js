@@ -23,6 +23,13 @@ test("countSentences counts an unfinished trailing phrase as one sentence", () =
   assert.strictEqual(countSentences("Hi. and then"), 2);
   assert.strictEqual(countSentences("no ending here"), 1);
 });
+test("countSentences does not count closing quotes or brackets after an ending as a new sentence", () => {
+  assert.strictEqual(countSentences('She said "Go!"'), 1);
+  assert.strictEqual(countSentences("She said \u201cGo.\u201d"), 1);
+  assert.strictEqual(countSentences("He left (finally.)"), 1);
+  assert.strictEqual(countSentences("Really? [Yes.]"), 2);
+  assert.strictEqual(countSentences('He said "Hi." Then "Go!"'), 2);
+});
 test("countSentences returns zero for blank text", () => {
   assert.strictEqual(countSentences(""), 0);
   assert.strictEqual(countSentences("   \n\t "), 0);
