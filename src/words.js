@@ -10,4 +10,13 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function longestWord(text) {
+  const t = String(text).trim();
+  if (t === "") return "";
+  let best = "";
+  for (const token of t.split(/\s+/)) {
+    if (token.length > best.length) best = token;
+  }
+  return best;
+}
+module.exports = { countWords, slugify, truncate, longestWord };
