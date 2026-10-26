@@ -11,6 +11,6 @@ function truncate(text, max) {
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
 function capitalizeWords(text) {
-  return String(text).replace(/(^|\s)(\S)/g, (_, lead, c) => lead + c.toUpperCase());
+  return String(text).replace(/(^|\s)(\S)/gu, (_, lead, c) => lead + c.toUpperCase());
 }
 module.exports = { countWords, slugify, truncate, capitalizeWords };

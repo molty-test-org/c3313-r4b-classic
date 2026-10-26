@@ -26,3 +26,6 @@ test("capitalizeWords keeps empty input empty and coerces non-strings", () => {
   assert.strictEqual(capitalizeWords(""), "");
   assert.strictEqual(capitalizeWords(42), "42");
 });
+test("capitalizeWords uppercases supplementary-plane initials as whole code points", () => {
+  assert.strictEqual(capitalizeWords("\u{10428} word"), "\u{10400} Word");
+});
