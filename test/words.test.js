@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert");
-const { countWords, slugify, truncate } = require("../src/words");
+const { countWords, slugify, truncate, countSentences } = require("../src/words");
 
 test("countWords counts whitespace-separated words", () => {
   assert.strictEqual(countWords("one two  three"), 3);
@@ -8,6 +8,14 @@ test("countWords counts whitespace-separated words", () => {
 });
 test("slugify makes a url slug", () => {
   assert.strictEqual(slugify("Hello, World!"), "hello-world");
+});
+test("countSentences counts punctuation-terminated segments", () => {
+  assert.strictEqual(countSentences("Hi. Bye!"), 2);
+  assert.strictEqual(countSentences("Hi?!"), 1);
+  assert.strictEqual(countSentences("Hi..."), 1);
+  assert.strictEqual(countSentences("Hi"), 1);
+  assert.strictEqual(countSentences("   "), 0);
+  assert.strictEqual(countSentences(""), 0);
 });
 test("truncate shortens with an ellipsis", () => {
   assert.strictEqual(truncate("abcdef", 4), "abc…");
