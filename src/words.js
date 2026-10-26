@@ -10,4 +10,7 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function capitalizeWords(text) {
+  return String(text).replace(/(^|\s)(\S)/g, (_, lead, c) => lead + c.toUpperCase());
+}
+module.exports = { countWords, slugify, truncate, capitalizeWords };
