@@ -24,3 +24,6 @@ test("startsWithVowel checks the first letter, ignoring case", () => {
   assert.strictEqual(startsWithVowel(" apple"), false);
   assert.strictEqual(startsWithVowel("1st"), false);
 });
+test("startsWithVowel returns false for an uncoercible input", () => {
+  assert.strictEqual(startsWithVowel(Object.create(null)), false);
+});

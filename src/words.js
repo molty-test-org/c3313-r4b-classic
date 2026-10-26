@@ -11,6 +11,12 @@ function truncate(text, max) {
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
 function startsWithVowel(word) {
-  return /^[aeiou]/i.test(String(word));
+  let s;
+  try {
+    s = String(word);
+  } catch {
+    return false;
+  }
+  return /^[aeiou]/i.test(s);
 }
 module.exports = { countWords, slugify, truncate, startsWithVowel };
