@@ -10,4 +10,8 @@ function truncate(text, max) {
   const s = String(text);
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)) + "…";
 }
-module.exports = { countWords, slugify, truncate };
+function reverseWords(text) {
+  const t = String(text).trim();
+  return t === "" ? "" : t.split(/\s+/).reverse().join(" ");
+}
+module.exports = { countWords, slugify, truncate, reverseWords };
